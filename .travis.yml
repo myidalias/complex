@@ -1,0 +1,21 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t myidalias/complex-test -f Dockerfile.dev .
+
+script:
+  - docker run myidalias/complex-test npm run test -- --coverage
+
+after success:  
+ - docker build -t myidalias/complex-client ./client
+ - docker build -t myidalias/complex-nginx  ./nginx
+ - docker build -t myidalias/complex-server ./server
+ - docker build -t myidalias/complex-worker ./worker
+ - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+ - docker push myidalias/complex-client
+ - docker push myidalias/complex-nginx 
+ - docker push myidalias/complex-server
+ - docker push myidalias/complex-worker
+
