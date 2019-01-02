@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t myidalias/complex-test -f Dockerfile.dev .
+  - docker build -t myidalias/complex-test -f Dockerfile.dev ./client
 
 script:
   - docker run myidalias/complex-test npm run test -- --coverage
