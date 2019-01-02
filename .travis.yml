@@ -24,10 +24,11 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: docker-react
-  env: DockerReact-env
-  bucket_name: elasticbeanstalk-us-west-1-306476627547
-  bucket_path: docker-react
+  app: complex-docker
+  env: ComplexDocker-env
+  bucket_name: elasticbeanstalk-us-east-1-382498021366
+
+  bucket_path: complex-docker
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY_ON_TRAVISCI
