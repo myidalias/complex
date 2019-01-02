@@ -1,4 +1,4 @@
-FROM node:apline as tempbuild1
+FROM node:alpine as tempbuild1
 WORKDIR '/app'
 COPY ./package.json ./
 RUN npm run install
